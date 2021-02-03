@@ -6124,7 +6124,7 @@ var $elm$http$Http$get = function (r) {
 	return $elm$http$Http$request(
 		{body: $elm$http$Http$emptyBody, expect: r.expect, headers: _List_Nil, method: 'GET', timeout: $elm$core$Maybe$Nothing, tracker: $elm$core$Maybe$Nothing, url: r.url});
 };
-var $author$project$Main$Photos = F3(
+var $author$project$Main$Photo = F3(
 	function (id, url, bigUrl) {
 		return {bigUrl: bigUrl, id: id, url: url};
 	});
@@ -6139,7 +6139,7 @@ var $author$project$Main$photoDecoder = A2(
 	$elm$json$Json$Decode$list(
 		A4(
 			$elm$json$Json$Decode$map3,
-			$author$project$Main$Photos,
+			$author$project$Main$Photo,
 			A2($elm$json$Json$Decode$field, 'id', $elm$json$Json$Decode$int),
 			A2($elm$json$Json$Decode$field, 'webformatURL', $elm$json$Json$Decode$string),
 			A2($elm$json$Json$Decode$field, 'largeImageURL', $elm$json$Json$Decode$string))));

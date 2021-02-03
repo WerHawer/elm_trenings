@@ -25,7 +25,7 @@ main =
 -- MODEL
 
 
-type alias Photos =
+type alias Photo =
     { id : Int
     , url : String
     , bigUrl : String
@@ -35,7 +35,7 @@ type alias Photos =
 type APIStagePhotos
     = FailureP
     | LoadingP
-    | SuccessP (List Photos)
+    | SuccessP (List Photo)
 
 
 type alias Model =
@@ -63,7 +63,7 @@ type Msg
     = MorePlease
     | IncrementPage
     | ResetPage
-    | GotPhotos (Result Http.Error (List Photos))
+    | GotPhotos (Result Http.Error (List Photo))
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -123,7 +123,7 @@ viewPhotos model =
                 ]
 
 
-vievOnePhoto : Photos -> Html Msg
+vievOnePhoto : Photo -> Html Msg
 vievOnePhoto photo =
     img [ src photo.url ] []
 
@@ -145,11 +145,11 @@ createUrl model =
     "https://pixabay.com/api/?q=" ++ model.apiQuery ++ "&key=1992005-0c423af9a07f13d941d831108&image_type=photo&orientation=horizontal&per_page=12&page=" ++ String.fromInt model.apiPage
 
 
-photoDecoder : Decoder (List Photos)
+photoDecoder : Decoder (List Photo)
 photoDecoder =
     field "hits"
         (list
-            (map3 Photos
+            (map3 Photo
                 (field "id" int)
                 (field "webformatURL" string)
                 (field "largeImageURL" string)
